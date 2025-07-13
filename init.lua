@@ -265,21 +265,6 @@ require('lazy').setup({
             vim.g.db_ui_use_nerd_fonts = 1
         end,
     },
-    { -- optional saghen/blink.cmp completion source
-        'saghen/blink.cmp',
-        opts = {
-            sources = {
-                default = { "lsp", "path", "snippets", "buffer" },
-                per_filetype = {
-                    sql = { 'dadbod' },
-                },
-                -- add vim-dadbod-completion to your completion providers
-                providers = {
-                    dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
-                },
-            },
-        },
-    },
 
     -- NOTE: Plugins can also be added by using a table,
     -- with the first argument being the link and the following
@@ -888,7 +873,11 @@ require('lazy').setup({
 
             sources = {
                 default = { 'lsp', 'path', 'snippets', 'lazydev' },
+                per_filetype = {
+                    sql = { 'dadbod' },
+                },
                 providers = {
+                    dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
                     lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
                 },
             },
